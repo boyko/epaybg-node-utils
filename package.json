@@ -1,0 +1,28 @@
+{
+  "name": "epaybg-node-utils",
+  "version": "0.0.1",
+  "description": "Functions to encode and decode messages to and from the epay.bg payment gateway.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
+  },
+  "author": "Boyko Amarov <boyko.amarov@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.12.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "mocha": "^4.0.1"
+  },
+  "dependencies": {
+    "babel-preset-flow": "^6.23.0",
+    "crypto": "^1.0.1",
+    "querystring": "^0.2.0"
+  }
+}
