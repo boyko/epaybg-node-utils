@@ -6,7 +6,8 @@ import {
   createPaymentRequestData,
   decode,
   encode,
-  parsePayload
+  parseMessage,
+  validate
 } from '../src';
 
 describe('epaybg node utils', () => {
@@ -36,13 +37,36 @@ describe('epaybg node utils', () => {
       expect(result).to.equal('33ca6a84fc0b06a9506b79147faad49b53149657');
     });
   });
-  describe('parsePayload', () => {
+  describe('validate', () => {
+    it('should throw if secret is missing', () => {
+      // @ts-ignore
+      expect(() => validate({ encoded: '123', checksum: '4dsfs' })).to.throw('Missing epay secret.');
+    });
+    it('should return false if message is missing', () => {
+      // @ts-ignore
+      expect(validate(undefined, 'secret')).to.equal(false);
+    });
+    it('should return true if the message is valid', () => {
+      const encoded = encode('123');
+      const checksum = calculateChecksum(encoded, 'secret');
+      expect(validate({ encoded, checksum }, 'secret')).to.equal(true);
+    });
+    it('should return false if the message is invalid', () => {
+      expect(validate({ encoded: '1234', checksum: '123' }, 'secret')).to.equal(false);
+    });
+  });
+  describe('parseMessage', () => {
     it('should return an array', () => {
-      const payload =
+      const data =
         `INVOICE=11:STATUS=PAID:PAY_TIME=201806021230:STAN=123456:BCODE=123456\n
         INVOICE=12:STATUS=DENIED\n
-        INVOICE=13:STATUS=EXPIRED\n
-      `;
+        INVOICE=13:STATUS=EXPIRED`;
+
+      const message = {
+        encoded: encode(data),
+        checksum: calculateChecksum(data, 'secret')
+      };
+
       const expected = [
         {
           INVOICE: '11',
@@ -61,7 +85,7 @@ describe('epaybg node utils', () => {
         }
       ];
 
-      const result = parsePayload(payload);
+      const result = parseMessage(message);
       expect(result).to.deep.equal(expected);
     });
   });

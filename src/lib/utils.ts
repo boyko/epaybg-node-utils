@@ -8,6 +8,12 @@ export const encode = (data: string): string => {
 
 export const decode = (base64data: string): string => Buffer.from(base64data, 'base64').toString();
 
+/**
+ * Calculates the sha1 digest for a string using secret.
+ *
+ * @param data
+ * @param secret
+ */
 export const calculateChecksum = (data: string, secret: string): string => {
   if (!data || !secret) {
     throw new Error('Data and secret must be provided.');
@@ -16,6 +22,29 @@ export const calculateChecksum = (data: string, secret: string): string => {
     .createHmac('sha1', secret)
     .update(data)
     .digest('hex');
+};
+
+interface EpayMessage {
+  encoded: string,
+  checksum: string,
+}
+
+export const validate = (message: EpayMessage, secret: string): boolean => {
+  if (!secret) {
+    throw new Error('Missing epay secret.');
+  }
+  if (!message || !message.encoded) {
+    return false;
+  }
+
+  const { encoded, checksum } = message;
+  // TODO: validate checksum
+  if (calculateChecksum(encoded, secret) !== checksum) {
+    // console.log('==== Checksum not matching, rejecting... ====');
+    return false;
+  }
+
+  return true;
 };
 
 export interface BaseEvent {
@@ -39,18 +68,19 @@ export interface ErrorEvent extends BaseEvent {
 export type EpayEvent = SuccessEvent | ErrorEvent
 
 
-export const parsePayload = (payload: string): ReadonlyArray<EpayEvent> => {
+export const parseMessage = (payload: EpayMessage): ReadonlyArray<EpayEvent> => {
+  const { encoded } = payload;
+  const data = decode(encoded);
+
   const lines: EpayEvent[] = [];
-  payload
-    .split('\n')
-    .forEach((lineString: string) => {
-      if (!lineString || trim(lineString) === '') {
-        return;
-      }
-      const line = querystring.parse(trim(lineString), ':');
-      // @ts-ignore
-      lines.push(line);
-    });
+  data.split('\n').forEach((lineString: string) => {
+    if (!lineString || trim(lineString) === '') {
+      return;
+    }
+    const line = querystring.parse(trim(lineString), ':');
+    // @ts-ignore
+    lines.push(line);
+  });
   return lines;
 };
 
@@ -105,7 +135,7 @@ interface SignedEpayData extends EpayData {
 }
 
 /**
- * Creates a payment request object.
+ * Creates a payment request data.
  *
  * @param data
  * @param secret

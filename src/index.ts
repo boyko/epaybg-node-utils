@@ -2,7 +2,8 @@ export {
   encode,
   decode,
   calculateChecksum,
-  parsePayload,
+  parseMessage,
   createDataString,
-  createPaymentRequestData
+  createPaymentRequestData,
+  validate
 } from './lib/utils';

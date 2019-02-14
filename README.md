@@ -29,17 +29,35 @@ const data = {
 
 createPaymentRequestData(data, secret);
 ```
+## Validate a message
+
+```js
+const {validate} = require('epaybg-node-utils');
+
+const message = {
+  encoded: "SU5WT0lDRT0xMTpTVEFUVVM9UEFJRDpQQVlfVElNRT0yMDE4MDYwMjEyMzA6U1RBTj0xMjM0NTY6QkNPREU9MTIzNDU2CgogICAgICAgIElOVk9JQ0U9MTI6U1RBVFVTPURFTklFRAoKICAgICAgICBJTlZPSUNFPTEzOlNUQVRVUz1FWFBJUkVE",
+  checksum: "16b98ed563cafb2fc5b60d8d8f44e8c2e7cf66c9"
+}
+
+validate(message);
+```
 
 ## Parse a payment status message
 
 ```js
-const { parsePayload } = require('epaybg-node-utils');
+const { parseMessage } = require('epaybg-node-utils');
 
-const paymentStatusMessage = `INVOICE=11:STATUS=PAID:PAY_TIME=201806021230:STAN=123456:BCODE=123456\n
-INVOICE=12:STATUS=DENIED\n
-INVOICE=13:STATUS=EXPIRED`
+// Data encoded in message.encoded
+//`INVOICE=11:STATUS=PAID:PAY_TIME=201806021230:STAN=123456:BCODE=123456\n
+//INVOICE=12:STATUS=DENIED\n
+//INVOICE=13:STATUS=EXPIRED`
 
-parsePayload(paymentStatusMessage);
+const message = {
+  encoded: "SU5WT0lDRT0xMTpTVEFUVVM9UEFJRDpQQVlfVElNRT0yMDE4MDYwMjEyMzA6U1RBTj0xMjM0NTY6QkNPREU9MTIzNDU2CgogICAgICAgIElOVk9JQ0U9MTI6U1RBVFVTPURFTklFRAoKICAgICAgICBJTlZPSUNFPTEzOlNUQVRVUz1FWFBJUkVE",
+  checksum: "16b98ed563cafb2fc5b60d8d8f44e8c2e7cf66c9"
+}
+
+parseMessage(message);
 ```
 
 
