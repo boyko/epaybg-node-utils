@@ -75,7 +75,7 @@ npm install epaybg-node-utils --save
 // yarn
 yarn add epaybg-node-utils</code></pre>
 				<h2 id="create-a-payment-request">Create a payment request</h2>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> { createPaymentRequest } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'epaybg-node-utils'</span>);
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> { createPaymentRequestData } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'epaybg-node-utils'</span>);
 
 <span class="hljs-keyword">const</span> secret = <span class="hljs-string">'epaybg-secret'</span>;
 <span class="hljs-keyword">const</span> data = {
@@ -86,7 +86,7 @@ yarn add epaybg-node-utils</code></pre>
   <span class="hljs-attr">invoice</span>: <span class="hljs-string">'0001'</span>,
 };
 
-createPaymentRequest(data, secret);</code></pre>
+createPaymentRequestData(data, secret);</code></pre>
 				<h2 id="parse-a-payment-status-message">Parse a payment status message</h2>
 				<pre><code class="language-js"><span class="hljs-keyword">const</span> { parsePayload } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'epaybg-node-utils'</span>);
 
