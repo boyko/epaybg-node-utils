@@ -16,7 +16,7 @@ yarn add epaybg-node-utils
 ## Create a payment request
 
 ```js
-const { createPaymentRequest } = require('epaybg-node-utils');
+const { createPaymentRequestData } = require('epaybg-node-utils');
 
 const secret = 'epaybg-secret';
 const data = {
@@ -27,7 +27,7 @@ const data = {
   invoice: '0001',
 };
 
-createPaymentRequest(data, secret);
+createPaymentRequestData(data, secret);
 ```
 
 ## Parse a payment status message
