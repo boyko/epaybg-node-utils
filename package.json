@@ -1,6 +1,6 @@
 {
   "name": "epaybg-node-utils",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple library for sanitizing data using rules declared in a JSON schema format.",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
