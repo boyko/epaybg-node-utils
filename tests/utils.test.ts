@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import {
   calculateChecksum,
   createDataString,
-  createSignedPayload,
+  createPaymentRequestData,
   decode,
   encode,
   parsePayload
@@ -102,7 +102,7 @@ describe('epaybg node utils', () => {
       expect(result).to.equal('MIN=1234\nINVOICE=00001\nAMOUNT=33.23\nCURRENCY=BGN\nEXP_TIME=01.08.2020 23:15:30\nDESCR=some-description\nENCODING=utf-8');
     });
   });
-  describe('createSignedPayload', () => {
+  describe('createPaymentRequestData', () => {
     it('should return an object with encoded and checksum properties', () => {
       const data = {
         min: '1234',
@@ -112,7 +112,7 @@ describe('epaybg node utils', () => {
         exp_time: '01.08.2020 23:15:30',
         descr: 'some-description'
       };
-      const result = createSignedPayload(data, 'some-secret');
+      const result = createPaymentRequestData(data, 'some-secret');
       expect(result).to.deep.equal({
         min: '1234',
         amount: '33.23',

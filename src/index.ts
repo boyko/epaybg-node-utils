@@ -4,5 +4,5 @@ export {
   calculateChecksum,
   parsePayload,
   createDataString,
-  createSignedPayload
+  createPaymentRequestData
 } from './lib/utils';

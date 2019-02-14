@@ -70,6 +70,11 @@ interface EpayData {
 // EXP_TIME=01.08.2020 EXP_TIME=01.08.2020 23:15    (може да се подаде и с час:мин)
 // EXP_TIME=01.08.2020 23:15:30 (може да се подаде и с час:мин:сек)
 
+/**
+ * Create a string from payment request data.
+ *
+ * @param input
+ */
 export const createDataString = (input: EpayData): string => {
   const {
     min,
@@ -99,7 +104,13 @@ interface SignedEpayData extends EpayData {
   checksum: string,
 }
 
-export const createSignedPayload = (data: EpayData, secret: string): SignedEpayData => {
+/**
+ * Creates a payment request object.
+ *
+ * @param data
+ * @param secret
+ */
+export const createPaymentRequestData = (data: EpayData, secret: string): SignedEpayData => {
   const dataString = createDataString(data);
   const encoded = encode(dataString);
   const checksum = calculateChecksum(encoded, secret);
