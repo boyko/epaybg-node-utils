@@ -65,6 +65,36 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="node-js-functions-for-epay-bg">Node.js functions for epay.bg</h1>
+				<p><a href="https://travis-ci.org/boyko/epaybg-node-utils"><img src="https://travis-ci.org/boyko/epaybg-node-utils.svg?branch=master" alt="Build Status"></a></p>
+				<p>An <em>unofficial</em> library for parsing payment status messages and for creating payment requests with <a href="https://epay.bg">epay.bg</a>.
+				See their <a href="https://www.epay.bg/img/x/readme_web.pdf">API documentation</a> for details.</p>
+				<h2 id="installation">Installation</h2>
+				<pre><code class="language-sh">// npm
+npm install epaybg-node-utils --save
+
+// yarn
+yarn add epaybg-node-utils</code></pre>
+				<h2 id="create-a-payment-request">Create a payment request</h2>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> { createPaymentRequest } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'epaybg-node-utils'</span>);
+
+<span class="hljs-keyword">const</span> secret = <span class="hljs-string">'epaybg-secret'</span>;
+<span class="hljs-keyword">const</span> data = {
+  <span class="hljs-attr">min</span>: <span class="hljs-string">'some-merchant-id'</span>,
+  <span class="hljs-attr">amount</span>: <span class="hljs-string">'32.30'</span>,
+  <span class="hljs-attr">exp_time</span>: <span class="hljs-string">'201902011230'</span>,
+  <span class="hljs-attr">currency</span>: <span class="hljs-string">'BGN'</span>,
+  <span class="hljs-attr">invoice</span>: <span class="hljs-string">'0001'</span>,
+};
+
+createPaymentRequest(data, secret);</code></pre>
+				<h2 id="parse-a-payment-status-message">Parse a payment status message</h2>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> { parsePayload } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'epaybg-node-utils'</span>);
+
+<span class="hljs-keyword">const</span> paymentStatusMessage = <span class="hljs-string">`INVOICE=11:STATUS=PAID:PAY_TIME=201806021230:STAN=123456:BCODE=123456\n
+INVOICE=12:STATUS=DENIED\n
+INVOICE=13:STATUS=EXPIRED`</span>
+
+parsePayload(paymentStatusMessage);</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -102,7 +132,7 @@
 						<a href="globals.html#createdatastring" class="tsd-kind-icon">create<wbr>Data<wbr>String</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#createsignedpayload" class="tsd-kind-icon">create<wbr>Signed<wbr>Payload</a>
+						<a href="globals.html#createpaymentrequestdata" class="tsd-kind-icon">create<wbr>Payment<wbr>Request<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#decode" class="tsd-kind-icon">decode</a>
