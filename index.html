@@ -87,14 +87,29 @@ yarn add epaybg-node-utils</code></pre>
 };
 
 createPaymentRequestData(data, secret);</code></pre>
+				<h2 id="validate-a-message">Validate a message</h2>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> {validate} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'epaybg-node-utils'</span>);
+
+<span class="hljs-keyword">const</span> message = {
+  <span class="hljs-attr">encoded</span>: <span class="hljs-string">"SU5WT0lDRT0xMTpTVEFUVVM9UEFJRDpQQVlfVElNRT0yMDE4MDYwMjEyMzA6U1RBTj0xMjM0NTY6QkNPREU9MTIzNDU2CgogICAgICAgIElOVk9JQ0U9MTI6U1RBVFVTPURFTklFRAoKICAgICAgICBJTlZPSUNFPTEzOlNUQVRVUz1FWFBJUkVE"</span>,
+  <span class="hljs-attr">checksum</span>: <span class="hljs-string">"16b98ed563cafb2fc5b60d8d8f44e8c2e7cf66c9"</span>
+}
+
+validate(message);</code></pre>
 				<h2 id="parse-a-payment-status-message">Parse a payment status message</h2>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> { parsePayload } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'epaybg-node-utils'</span>);
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> { parseMessage } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'epaybg-node-utils'</span>);
 
-<span class="hljs-keyword">const</span> paymentStatusMessage = <span class="hljs-string">`INVOICE=11:STATUS=PAID:PAY_TIME=201806021230:STAN=123456:BCODE=123456\n
-INVOICE=12:STATUS=DENIED\n
-INVOICE=13:STATUS=EXPIRED`</span>
+<span class="hljs-comment">// Data encoded in message.encoded</span>
+<span class="hljs-comment">//`INVOICE=11:STATUS=PAID:PAY_TIME=201806021230:STAN=123456:BCODE=123456\n</span>
+<span class="hljs-comment">//INVOICE=12:STATUS=DENIED\n</span>
+<span class="hljs-comment">//INVOICE=13:STATUS=EXPIRED`</span>
 
-parsePayload(paymentStatusMessage);</code></pre>
+<span class="hljs-keyword">const</span> message = {
+  <span class="hljs-attr">encoded</span>: <span class="hljs-string">"SU5WT0lDRT0xMTpTVEFUVVM9UEFJRDpQQVlfVElNRT0yMDE4MDYwMjEyMzA6U1RBTj0xMjM0NTY6QkNPREU9MTIzNDU2CgogICAgICAgIElOVk9JQ0U9MTI6U1RBVFVTPURFTklFRAoKICAgICAgICBJTlZPSUNFPTEzOlNUQVRVUz1FWFBJUkVE"</span>,
+  <span class="hljs-attr">checksum</span>: <span class="hljs-string">"16b98ed563cafb2fc5b60d8d8f44e8c2e7cf66c9"</span>
+}
+
+parseMessage(message);</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -112,6 +127,9 @@ parsePayload(paymentStatusMessage);</code></pre>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-not-exported">
 						<a href="interfaces/epaydata.html" class="tsd-kind-icon">Epay<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/epaymessage.html" class="tsd-kind-icon">Epay<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/errorevent.html" class="tsd-kind-icon">Error<wbr>Event</a>
@@ -141,7 +159,10 @@ parsePayload(paymentStatusMessage);</code></pre>
 						<a href="globals.html#encode" class="tsd-kind-icon">encode</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#parsepayload" class="tsd-kind-icon">parse<wbr>Payload</a>
+						<a href="globals.html#parsemessage" class="tsd-kind-icon">parse<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#validate" class="tsd-kind-icon">validate</a>
 					</li>
 				</ul>
 			</nav>

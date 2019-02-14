@@ -72,6 +72,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface"><a href="interfaces/baseevent.html" class="tsd-kind-icon">Base<wbr>Event</a></li>
 								<li class="tsd-kind-interface tsd-is-not-exported"><a href="interfaces/epaydata.html" class="tsd-kind-icon">Epay<wbr>Data</a></li>
+								<li class="tsd-kind-interface tsd-is-not-exported"><a href="interfaces/epaymessage.html" class="tsd-kind-icon">Epay<wbr>Message</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/errorevent.html" class="tsd-kind-icon">Error<wbr>Event</a></li>
 								<li class="tsd-kind-interface tsd-is-not-exported"><a href="interfaces/signedepaydata.html" class="tsd-kind-icon">Signed<wbr>Epay<wbr>Data</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/successevent.html" class="tsd-kind-icon">Success<wbr>Event</a></li>
@@ -91,7 +92,8 @@
 								<li class="tsd-kind-function"><a href="globals.html#createpaymentrequestdata" class="tsd-kind-icon">create<wbr>Payment<wbr>Request<wbr>Data</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#decode" class="tsd-kind-icon">decode</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#encode" class="tsd-kind-icon">encode</a></li>
-								<li class="tsd-kind-function"><a href="globals.html#parsepayload" class="tsd-kind-icon">parse<wbr>Payload</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#parsemessage" class="tsd-kind-icon">parse<wbr>Message</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#validate" class="tsd-kind-icon">validate</a></li>
 							</ul>
 						</section>
 					</div>
@@ -105,7 +107,7 @@
 					<div class="tsd-signature tsd-kind-icon">Epay<wbr>Event<span class="tsd-signature-symbol">:</span> <a href="interfaces/successevent.html" class="tsd-signature-type">SuccessEvent</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/errorevent.html" class="tsd-signature-type">ErrorEvent</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/f64c76f/src/lib/utils.ts#L39">lib/utils.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/4be3a83/src/lib/utils.ts#L68">lib/utils.ts:68</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -122,9 +124,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/f64c76f/src/lib/utils.ts#L11">lib/utils.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/4be3a83/src/lib/utils.ts#L17">lib/utils.ts:17</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calculates the sha1 digest for a string using secret.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -132,6 +139,10 @@
 								</li>
 								<li>
 									<h5>secret: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -148,7 +159,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/f64c76f/src/lib/utils.ts#L78">lib/utils.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/4be3a83/src/lib/utils.ts#L108">lib/utils.ts:108</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -180,12 +191,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/f64c76f/src/lib/utils.ts#L113">lib/utils.ts:113</a></li>
+									<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/4be3a83/src/lib/utils.ts#L143">lib/utils.ts:143</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a payment request object.</p>
+									<p>Creates a payment request data.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -215,7 +226,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/f64c76f/src/lib/utils.ts#L9">lib/utils.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/4be3a83/src/lib/utils.ts#L9">lib/utils.ts:9</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -238,7 +249,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/f64c76f/src/lib/utils.ts#L5">lib/utils.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/4be3a83/src/lib/utils.ts#L5">lib/utils.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -252,25 +263,51 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="parsepayload" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> parse<wbr>Payload</h3>
+					<a name="parsemessage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> parse<wbr>Message</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">parse<wbr>Payload<span class="tsd-signature-symbol">(</span>payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ReadonlyArray</span><span class="tsd-signature-symbol">&lt;</span><a href="globals.html#epayevent" class="tsd-signature-type">EpayEvent</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Message<span class="tsd-signature-symbol">(</span>payload<span class="tsd-signature-symbol">: </span><a href="interfaces/epaymessage.html" class="tsd-signature-type">EpayMessage</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ReadonlyArray</span><span class="tsd-signature-symbol">&lt;</span><a href="globals.html#epayevent" class="tsd-signature-type">EpayEvent</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/f64c76f/src/lib/utils.ts#L42">lib/utils.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/4be3a83/src/lib/utils.ts#L71">lib/utils.ts:71</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>payload: <span class="tsd-signature-type">string</span></h5>
+									<h5>payload: <a href="interfaces/epaymessage.html" class="tsd-signature-type">EpayMessage</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ReadonlyArray</span><span class="tsd-signature-symbol">&lt;</span><a href="globals.html#epayevent" class="tsd-signature-type">EpayEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="validate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> validate</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">validate<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="interfaces/epaymessage.html" class="tsd-signature-type">EpayMessage</a>, secret<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/boyko/epaybg-node-utils/blob/4be3a83/src/lib/utils.ts#L32">lib/utils.ts:32</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>message: <a href="interfaces/epaymessage.html" class="tsd-signature-type">EpayMessage</a></h5>
+								</li>
+								<li>
+									<h5>secret: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -291,6 +328,9 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-is-not-exported">
 						<a href="interfaces/epaydata.html" class="tsd-kind-icon">Epay<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/epaymessage.html" class="tsd-kind-icon">Epay<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/errorevent.html" class="tsd-kind-icon">Error<wbr>Event</a>
@@ -320,7 +360,10 @@
 						<a href="globals.html#encode" class="tsd-kind-icon">encode</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#parsepayload" class="tsd-kind-icon">parse<wbr>Payload</a>
+						<a href="globals.html#parsemessage" class="tsd-kind-icon">parse<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#validate" class="tsd-kind-icon">validate</a>
 					</li>
 				</ul>
 			</nav>
