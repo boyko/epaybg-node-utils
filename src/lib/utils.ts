@@ -151,3 +151,25 @@ export const createPaymentRequestData = (data: EpayData, secret: string): Signed
     checksum
   };
 };
+
+
+const eventTimeRegexp = /^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})$/;
+
+/**
+ * Parses payment time string and returns a timestamp (milliseconds).
+ * @param time
+ */
+export const parseEventTime = (time: string): number => {
+  const matchResult = time.match(eventTimeRegexp);
+  // @ts-ignore
+  const [match, year, month, day, hours, minutes, seconds] = matchResult;
+
+  return new Date(
+    parseInt(year, 10),
+    parseInt(month, 10) - 1,
+    parseInt(day, 10),
+    parseInt(hours, 10),
+    parseInt(minutes, 10),
+    parseInt(seconds, 10)
+  ).getTime();
+};

@@ -6,6 +6,7 @@ import {
   createPaymentRequestData,
   decode,
   encode,
+  parseEventTime,
   parseMessage,
   validate
 } from '../src';
@@ -147,6 +148,13 @@ describe('epaybg node utils', () => {
         encoded: 'TUlOPTEyMzQKSU5WT0lDRT0wMDAwMQpBTU9VTlQ9MzMuMjMKQ1VSUkVOQ1k9QkdOCkVYUF9USU1FPTAxLjA4LjIwMjAgMjM6MTU6MzAKREVTQ1I9c29tZS1kZXNjcmlwdGlvbgpFTkNPRElORz11dGYtOA==',
         checksum: '9d09db1b61bfd7947ed390d6464ca7953d0bf3f2'
       });
+    });
+  });
+  describe('parseEventTime', () => {
+    it('should parse a string in YYYMMDDhhmmss format and should return a timestamp (milliseconds)', () => {
+      const timestamp = new Date(2018, 5, 2, 12, 14, 32).getTime();
+      const eventTime = '20180602121432';
+      expect(parseEventTime(eventTime)).to.equal(timestamp);
     });
   });
 });

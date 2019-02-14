@@ -5,5 +5,6 @@ export {
   parseMessage,
   createDataString,
   createPaymentRequestData,
-  validate
+  validate,
+  parseEventTime
 } from './lib/utils';
