@@ -1,1 +1,3 @@
-# epaybg-node-utils
+# Node.js functions for epay.bg
+
+
